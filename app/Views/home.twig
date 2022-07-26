@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Crypto news</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        #article-div {
+            background: #a0dbff;
+            padding: 20px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            border-radius: 20px;
+            transition: 0.3s;
+        }
+        #article-div:hover{
+            background: #ffe790;
+
+        }
+        a.fill-div {
+            display: block;
+            margin: inherit;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body style="background-image: url(https://thumbs.gfycat.com/IllSharpCod-max-1mb.gif); text-align: center">
+<div style="margin: auto; width: 60%">
+    {% for article in articles %}
+        <div id="article-div">
+            <a href="{{ article.url }}" target="_blank"  class="fill-div">
+                <H2>
+                    {{ article.title }}
+                </H2>
+                <p style="margin: 20px;text-align: justify">
+                    {{ article.description }}
+                </p>
+
+                <img src="{{ article.urlToImage }}" alt="" style="max-width: 100%;height: auto">
+            </a>
+        </div>
+    {% endfor %}
+</div>
+</body>
+</html>
