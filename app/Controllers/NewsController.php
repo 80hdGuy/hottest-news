@@ -7,13 +7,17 @@ use App\View;
 
 class NewsController
 {
-    public function getIndex(): string
+    private TodayCryptoNewsService $service;
+    public function __construct(TodayCryptoNewsService $service)
     {
-        $service = new TodayCryptoNewsService();
+        $this->service = $service;
+    }
+
+    public function getIndex(): View
+    {
         return new View(
             "app/Views/home.twig",
-            ["articles" => $service->execute()->getAll()]
+            ["articles" => $this->service->execute()->getAll()]
         );
-
     }
 }

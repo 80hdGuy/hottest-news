@@ -7,14 +7,32 @@
         #article-div {
             background: #a0dbff;
             padding: 20px;
-            margin-top: 20px;
-            margin-bottom: 20px;
+            margin: 40px;
             border-radius: 20px;
             transition: 0.3s;
         }
         #article-div:hover{
             background: #ffe790;
+            transform: scale(1.05);
+        }
+        #article-description{
+            font-family: 'Roboto Slab', serif;
+            margin: 20px;
+            text-align: justify;
 
+        }
+        #article-title {
+            font-family: 'Roboto Slab', serif;
+            font-size: x-large;
+            font-style: oblique;
+        }
+        #article-image{
+            margin: auto;
+            align-self: center;
+        }
+        #article-author {
+            font-family: 'Roboto Slab', serif;
+            text-align: left;
         }
         a.fill-div {
             display: block;
@@ -22,20 +40,26 @@
             text-decoration: none;
         }
     </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@200;500&display=swap" rel="stylesheet">
 </head>
 <body style="background-image: url(https://thumbs.gfycat.com/IllSharpCod-max-1mb.gif); text-align: center">
 <div style="margin: auto; width: 60%">
     {% for article in articles %}
         <div id="article-div">
             <a href="{{ article.url }}" target="_blank"  class="fill-div">
-                <H2>
+                <h2 id="article-title">
                     {{ article.title }}
-                </H2>
-                <p style="margin: 20px;text-align: justify">
+                </h2>
+                <p id="article-description" style="">
                     {{ article.description }}
                 </p>
 
-                <img src="{{ article.urlToImage }}" alt="" style="max-width: 100%;height: auto">
+                <img id="article-image" src="{{ article.urlToImage }}" alt="" style="max-width: 100%;height: auto">
+
+                <p id="article-author">{{ article.author }}</p>
+
             </a>
         </div>
     {% endfor %}

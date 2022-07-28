@@ -3,17 +3,18 @@
 namespace App\Services;
 
 use App\Models\NewsArticlesCollection;
+use App\Repositories\ArticlesRepository;
 use App\Repositories\NewsArticlesRepository;
 use Carbon\Carbon;
 
 class TodayCryptoNewsService
 {
 
-    private NewsArticlesRepository $newsArticlesRepository;
+    private ArticlesRepository $newsArticlesRepository;
 
-    public function __construct()
+    public function __construct(ArticlesRepository $articlesRepository)
     {
-        $this->newsArticlesRepository = new NewsArticlesRepository();
+        $this->newsArticlesRepository = $articlesRepository;
     }
 
     public function execute(): NewsArticlesCollection

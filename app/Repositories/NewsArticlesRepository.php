@@ -3,7 +3,6 @@
 namespace App\Repositories;
 
 use App\Models\NewsArticle;
-use Dotenv\Dotenv;
 use jcobhams\NewsApi\NewsApi;
 use App\Models\NewsArticlesCollection;
 
@@ -12,11 +11,8 @@ class NewsArticlesRepository implements ArticlesRepository
 
     public function getAll(string $q, string $from = null, string $to = null): NewsArticlesCollection
     {
-        $dotenv = Dotenv::createImmutable("./");
-        $dotenv->load();
-        $apiKey = $_ENV['API_KEY'];
-        $newsApi = new NewsApi($apiKey);
 
+        $newsApi = new NewsApi($_ENV['API_KEY']);
 
         $all_articles = $newsApi->getEverything(
             $q,
